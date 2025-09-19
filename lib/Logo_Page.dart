@@ -15,7 +15,7 @@ class LogoPage extends StatelessWidget {
               //background image
               Positioned.fill(
                 child: Image.asset(
-                  'assets/MobiBG.png',
+                  'assets/App_Icon.png',
                   fit: BoxFit.fill,
                 ),
               ),
@@ -27,7 +27,7 @@ class LogoPage extends StatelessWidget {
                   'Too Small!',
                   style: GoogleFonts.outfit(
                       fontSize: 30,
-                      color: Colors.green,
+                      color: Colors.red,
                       fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
