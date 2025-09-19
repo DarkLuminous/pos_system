@@ -247,7 +247,11 @@ class D_Log_In_Page extends StatelessWidget {
                         height: 40.0,
                         margin: EdgeInsets.only(left: 30, right: 30),
                         child: ElevatedButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const Responsive_Dashboard_Page()),
+                          );},
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.green,
                           ),
