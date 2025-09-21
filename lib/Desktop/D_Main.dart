@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Dashboard_Content_D.dart';
+import 'Prosses_Order_Content.dart';
 
 class D_Dashboad_Page extends StatefulWidget {
   const D_Dashboad_Page({super.key});
@@ -15,7 +16,7 @@ class _D_Dashboad_PageState extends State<D_Dashboad_Page> {
 
   final List<Widget> _mainContentPages = [
     DashboardContent(),
-    const Center(child: Text('Process Order Page')),
+    ProcessOrderContent(),
     const Center(child: Text('Product/Inventory Page')),
     const Center(child: Text('Reports Analytics Page')),
     const Center(child: Text('Transaction History Page')),
@@ -40,11 +41,12 @@ class _D_Dashboad_PageState extends State<D_Dashboad_Page> {
                 _buildNavigationRail(),
                 const VerticalDivider(thickness: 0.2, width: 1),
                 Expanded(
-                    children: [
-                      _buildCustomAppBar(),
-                      _mainContentPages[_selectedIndex],
-                    ],
-                  ),
+                  child: ListView(
+                      children: [
+                        _buildCustomAppBar(),
+                        _mainContentPages[_selectedIndex],
+                      ],
+                    ),
                 ),
               ],
             ),
@@ -115,15 +117,15 @@ class _D_Dashboad_PageState extends State<D_Dashboad_Page> {
     return const [
 
       NavigationRailDestination(
-        icon: Icon(Icons.shopping_cart_outlined), // Consider outlined icons for inactive
-        selectedIcon: Icon(Icons.shopping_cart), // Filled icon for active
+        icon: Icon(Icons.home_outlined), // Consider outlined icons for inactive
+        selectedIcon: Icon(Icons.home), // Filled icon for active
         label: Text('Process Order'),
       ),
 
       NavigationRailDestination(
-        icon: Icon(Icons.warehouse_outlined),
-        selectedIcon: Icon(Icons.warehouse),
-        label: Text('Product/Inventory'),
+        icon: Icon(Icons.shopping_basket_outlined),
+        selectedIcon: Icon(Icons.shopping_basket),
+        label: Text('Process Order'),
       ),
 
       NavigationRailDestination(
