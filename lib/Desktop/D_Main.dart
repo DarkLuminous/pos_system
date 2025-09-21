@@ -40,7 +40,6 @@ class _D_Dashboad_PageState extends State<D_Dashboad_Page> {
                 _buildNavigationRail(),
                 const VerticalDivider(thickness: 0.2, width: 1),
                 Expanded(
-                  child: ListView(
                     children: [
                       _buildCustomAppBar(),
                       _mainContentPages[_selectedIndex],
@@ -181,7 +180,6 @@ class _D_Dashboad_PageState extends State<D_Dashboad_Page> {
           children: [
             const CircleAvatar(
               radius: 25,
-              backgroundImage: AssetImage('assets/App_Icon.png'),
             ),
             const SizedBox(width: 10),
             const Text(
