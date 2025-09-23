@@ -104,11 +104,11 @@ class DashboardCategoriesBuilder extends StatelessWidget {
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
-        itemCount: Pro_categories.length,
+        itemCount: Dash_categories.length,
         itemBuilder: (context, index) {
           return CategoriesBoxStyle(
-            name: Pro_categories[index]['name']!,
-            imagePath: Pro_categories[index]['image']!,
+            name: Dash_categories[index]['name']!,
+            imagePath: Dash_categories[index]['image']!,
           );
         },
       ),
@@ -314,12 +314,12 @@ class ProProductBuilder extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 6, // Number of columns
+          crossAxisCount: 4, // Number of columns
           crossAxisSpacing: 10, // Spacing between columns
           mainAxisSpacing: 10, // Spacing between rows
           childAspectRatio: 1.5, // Width/Height ratio
         ),
-        itemCount: Pro_categories.length,
+        itemCount: Dash_categories.length,
         itemBuilder: (context, index) {
           return ProCategoriesBoxStyle(
             name: Pro_product[index]['name']!,
@@ -403,31 +403,6 @@ class ProProductBoxStyle extends StatelessWidget {
 }
 
 //==============================================================================
-// Pro_Categories List
-//==============================================================================
-final List<Map<String, String>> Pro_categories = [
-  {'name': 'Category 1', 'image': 'assets/veg_cat.png'},
-  {'name': 'Category 2', 'image': 'assets/fru_cat.png'},
-  {'name': 'Category 3', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 4', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 5', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 6', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 7', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 8', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 9', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 10', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 11', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 12', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 13', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 14', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 15', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 16', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 17', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 18', 'image': 'assets/App_Icon.png'},
-
-];
-
-//==============================================================================
 // Pro_Categories Builder
 //==============================================================================
 
@@ -443,11 +418,11 @@ class ProCategoriesBuilder extends StatelessWidget {
           mainAxisSpacing: 10, // Spacing between rows
           childAspectRatio: 1.5, // Width/Height ratio
         ),
-        itemCount: Pro_categories.length,
+        itemCount: Dash_categories.length,
         itemBuilder: (context, index) {
           return ProCategoriesBoxStyle(
-            name: Pro_categories[index]['name']!,
-            imagePath: Pro_categories[index]['image']!,
+            name: Dash_categories[index]['name']!,
+            imagePath: Dash_categories[index]['image']!,
           );
         },
       ),
