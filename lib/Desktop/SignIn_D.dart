@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Responsive_Page.dart';
 
-class D_Sign_In_Page extends StatelessWidget {
-  const D_Sign_In_Page({super.key});
+class SignIn_D extends StatelessWidget {
+  const SignIn_D({super.key});
 
   @override
   Widget build(BuildContext context) {

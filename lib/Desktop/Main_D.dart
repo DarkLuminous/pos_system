@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import 'Dashboard_Content_D.dart';
-import 'Prosses_Order_Content.dart';
+import 'Process_Order_Content_D.dart';
+import 'Inventory_Content_D.dart';
+
 
 class D_Dashboad_Page extends StatefulWidget {
   const D_Dashboad_Page({super.key});
@@ -16,8 +21,8 @@ class _D_Dashboad_PageState extends State<D_Dashboad_Page> {
 
   final List<Widget> _mainContentPages = [
     DashboardContent(),
-    ProcessOrderContent(),
-    const Center(child: Text('Product/Inventory Page')),
+    ProcessOrderContentD(),
+    InventoryContentD(),
     const Center(child: Text('Reports Analytics Page')),
     const Center(child: Text('Transaction History Page')),
   ];
@@ -83,15 +88,11 @@ class _D_Dashboad_PageState extends State<D_Dashboad_Page> {
             width: _appIconSize,
             height: _appIconSize,
           ),
-          onPressed: () {
-            print('Image button pressed!');
-            // Potentially navigate to a home/main dashboard if not already there
-            // Or perform another action
-          },
+          onPressed: () {},
         ),
         Visibility(
           visible: _isNavigationRailExpanded,
-          child: const Text(
+          child: const AutoSizeText(
             'POS SYSTEM',
             style: TextStyle(
               fontSize: 30,
@@ -114,31 +115,42 @@ class _D_Dashboad_PageState extends State<D_Dashboad_Page> {
   }
 
   List<NavigationRailDestination> _buildNavigationRailDestinations() {
-    return const [
+    return [
 
       NavigationRailDestination(
         icon: Icon(Icons.home_outlined), // Consider outlined icons for inactive
         selectedIcon: Icon(Icons.home), // Filled icon for active
-        label: Text('Process Order'),
+        label: AutoSizeText('Dashboard'),
       ),
 
       NavigationRailDestination(
         icon: Icon(Icons.shopping_basket_outlined),
         selectedIcon: Icon(Icons.shopping_basket),
-        label: Text('Process Order'),
+        label: AutoSizeText('Process Order'),
       ),
 
       NavigationRailDestination(
-        icon: Icon(Icons.bar_chart_outlined),
-        selectedIcon: Icon(Icons.bar_chart),
-        label: Text('Reports Analytics'),
+        icon: Image.asset('assets/cube-outline.png',
+          width: 23,
+          height: 23,),
+        selectedIcon: Image.asset('assets/3d-cube.png',
+          width: 23,
+          height: 23,),
+        label: AutoSizeText('Inventory'),
       ),
 
       NavigationRailDestination(
         icon: Icon(Icons.receipt_long_outlined),
         selectedIcon: Icon(Icons.receipt_long),
-        label: Text('Transaction History'),
+        label: AutoSizeText('Transaction History'),
       ),
+
+      NavigationRailDestination(
+        icon: Icon(Icons.bar_chart_outlined),
+        selectedIcon: Icon(Icons.bar_chart),
+        label: AutoSizeText('Reports Analytics'),
+      ),
+
     ];
   }
 
@@ -158,7 +170,7 @@ class _D_Dashboad_PageState extends State<D_Dashboad_Page> {
               }),
         ),
         const SizedBox(height: 4), // Consistent spacing
-        const Text(
+        const AutoSizeText(
           'Log Out',
           style: TextStyle(
             fontSize: 10,
@@ -172,7 +184,22 @@ class _D_Dashboad_PageState extends State<D_Dashboad_Page> {
   }
 
   PreferredSizeWidget _buildCustomAppBar() {
+    final List<String> appBarTitles = [
+      '',
+      'Process Order',
+      'Inventory',
+      'Transaction History',
+      'Reports Analytics',
+    ];
     return AppBar(
+      title: AutoSizeText(appBarTitles[_selectedIndex],
+        style:
+        GoogleFonts.poppins(
+          fontWeight: FontWeight.bold,
+          fontSize: 30,
+          color: Colors.black,
+        ),
+      ),
       toolbarHeight: 70,
       backgroundColor: Colors.transparent,
       elevation: 0,
@@ -184,7 +211,7 @@ class _D_Dashboad_PageState extends State<D_Dashboad_Page> {
               radius: 25,
             ),
             const SizedBox(width: 10),
-            const Text(
+            const AutoSizeText(
               'Welcome, User_Name', // Replace with actual user data
               style: TextStyle(
                 fontSize: 20,
