@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pos_system/Desktop/Dashboard_Content_D.dart';
 
 //Desktop pages
-import 'Desktop/Sign_in_Desktop.dart';
-import 'Desktop/Log_in_Desktop.dart';
-import 'Desktop/D_Main.dart';
+import 'Desktop/SignIn_D.dart';
+import 'Desktop/LogIn_D.dart';
+import 'Desktop/Main_D.dart';
 
 //Mobile pages
 import 'Mobile/Sign_in_Mobile.dart';
@@ -74,7 +73,7 @@ class Responsive_Sign_In_Page extends StatelessWidget {
           }
 
           else if (constraints.maxWidth > 600) {
-            return const D_Sign_In_Page();
+            return const SignIn_D();
           }
 
           else {

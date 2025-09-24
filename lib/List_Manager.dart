@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:intl/intl.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 //==============================================================================
 // Info List
@@ -63,7 +64,7 @@ class InfoBoxStyle extends StatelessWidget {
                 color: Colors.green[600],
               ),
               const SizedBox(height: 8),
-              Text(
+              AutoSizeText(
                 text,
                 style: const TextStyle(
                   fontSize: 18,
@@ -152,7 +153,7 @@ class CategoriesBoxStyle extends StatelessWidget {
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
+                    color: Colors.grey,
                     spreadRadius: 2,
                     blurRadius: 5,
                     offset: const Offset(0, 3),
@@ -161,7 +162,7 @@ class CategoriesBoxStyle extends StatelessWidget {
                 borderRadius: BorderRadius.circular(5),
               ),
                 child: SizedBox(
-                  child: Text(
+                  child: AutoSizeText(
                     name,
                     style: const TextStyle(
                       fontSize: 15,
@@ -250,7 +251,7 @@ class TopItemBoxStyle extends StatelessWidget {
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
+                      color: Colors.grey,
                       spreadRadius: 2,
                       blurRadius: 5,
                       offset: const Offset(0, 3),
@@ -259,7 +260,7 @@ class TopItemBoxStyle extends StatelessWidget {
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: SizedBox(
-                  child: Text(
+                  child: AutoSizeText(
                     name,
                     style: const TextStyle(
                       fontSize: 15,
@@ -282,25 +283,16 @@ class TopItemBoxStyle extends StatelessWidget {
 // Pro_Product List
 //==============================================================================
 final List<Map<String, String>> Pro_product = [
-  {'name': 'Category 1', 'image': 'assets/veg_cat.png'},
-  {'name': 'Category 2', 'image': 'assets/fru_cat.png'},
-  {'name': 'Category 3', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 4', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 5', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 6', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 7', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 8', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 9', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 10', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 11', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 12', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 13', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 14', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 15', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 16', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 17', 'image': 'assets/App_Icon.png'},
-  {'name': 'Category 18', 'image': 'assets/App_Icon.png'},
-
+  {'name': 'Product 1', 'image': 'assets/veg_cat.png', 'price': '10.00'},
+  {'name': 'Product 2', 'image': 'assets/fru_cat.png', 'price': '20.00'},
+  {'name': 'Product 3', 'image': 'assets/App_Icon.png', 'price': '30.00'},
+  {'name': 'Product 4', 'image': 'assets/App_Icon.png', 'price': '40.00'},
+  {'name': 'Product 5', 'image': 'assets/App_Icon.png', 'price': '50.00'},
+  {'name': 'Product 6', 'image': 'assets/App_Icon.png', 'price': '60.00'},
+  {'name': 'Product 7', 'image': 'assets/App_Icon.png', 'price': '70.00'},
+  {'name': 'Product 8', 'image': 'assets/App_Icon.png', 'price': '80.00'},
+  {'name': 'Product 9', 'image': 'assets/App_Icon.png', 'price': '90.00'},
+  {'name': 'Product 10', 'image': 'assets/App_Icon.png', 'price': '100.00'},
 ];
 
 //==============================================================================
@@ -314,16 +306,17 @@ class ProProductBuilder extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4, // Number of columns
+          crossAxisCount: 3, // Number of columns
           crossAxisSpacing: 10, // Spacing between columns
           mainAxisSpacing: 10, // Spacing between rows
-          childAspectRatio: 1.5, // Width/Height ratio
+          childAspectRatio: 1, // Width/Height ratio
         ),
-        itemCount: Dash_categories.length,
+        itemCount: Pro_product.length,
         itemBuilder: (context, index) {
-          return ProCategoriesBoxStyle(
+          return ProProductBoxStyle(
             name: Pro_product[index]['name']!,
             imagePath: Pro_product[index]['image']!,
+            price: Pro_product[index]['price']!,
           );
         },
       ),
@@ -338,63 +331,62 @@ class ProProductBuilder extends StatelessWidget {
 class ProProductBoxStyle extends StatelessWidget {
   final String name;
   final String imagePath;
+  final String price;
 
-  ProProductBoxStyle({required this.name, required this.imagePath});
+  ProProductBoxStyle({required this.name, required this.imagePath, required this.price,});
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(5),
-      elevation: 3,
+      shadowColor: Colors.transparent,
+      color: Colors.transparent,
       child: Container(
         padding: const EdgeInsets.all(1),
-        child: Stack(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // Image container
             Flexible(
               child: Container(
-                alignment: Alignment.bottomLeft,
-                height: 150,
+                margin: EdgeInsets.only(top: 10, bottom: 10),
+                alignment: Alignment.center,
+                height: 250,
                 width: 250,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: Colors.black, width: 0.1),
                   image: DecorationImage(
                     image: AssetImage(imagePath),
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),
             ),
 
-            Container(
-              alignment: Alignment.topRight,
-              child: SizedBox(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        spreadRadius: 1,
-                        blurRadius: 3,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: Text(
-                    name,
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
+            AutoSizeText(
+              name,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
+
+            AutoSizeText(
+              NumberFormat.currency(
+                symbol: '₱',
+                decimalDigits: 2,
+              ).format(double.parse(price)),
+              style: const TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 15,
+              ),
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+
           ],
         ),
       ),
@@ -468,8 +460,7 @@ class ProCategoriesBoxStyle extends StatelessWidget {
               ),
             ),
 
-            Container(
-              alignment: Alignment.topRight,
+            Expanded(
               child: SizedBox(
                 child: Container(
                   decoration: BoxDecoration(
@@ -477,14 +468,14 @@ class ProCategoriesBoxStyle extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
+                        color: Colors.grey,
                         spreadRadius: 1,
                         blurRadius: 3,
                         offset: const Offset(0, 2),
                       ),
                     ],
                   ),
-                  child: Text(
+                  child: AutoSizeText(
                     name,
                     style: const TextStyle(
                       fontSize: 15,
@@ -501,5 +492,108 @@ class ProCategoriesBoxStyle extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+//==============================================================================
+// Inv_Product Builder with ListView
+//==============================================================================
+
+class InvProductBuilder extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ListView.builder(
+        itemCount: Pro_product.length,
+        itemBuilder: (context, index) {
+          return InvProductListTile(
+            name: Pro_product[index]['name']!,
+            imagePath: Pro_product[index]['image']!,
+            price: Pro_product[index]['price']!,
+          );
+        },
+      ),
+    );
+  }
+}
+
+//==============================================================================
+// Inv_Product ListTile Style
+//==============================================================================
+
+class InvProductListTile extends StatelessWidget {
+  final String name;
+  final String imagePath;
+  final String price;
+
+  InvProductListTile({required this.name, required this.imagePath, required this.price});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+      color: Colors.transparent,
+      shadowColor: Colors.transparent,
+      child: ListTile(
+        leading: Container(
+          width: 60,
+          height: 60,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            image: DecorationImage(
+              image: AssetImage(imagePath),
+              fit: BoxFit.cover,
+            ),
+            border: Border.all(color: Colors.black, width: 0.1),
+          ),
+        ),
+        title: Row(
+          children: [
+            Text(
+              name,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+
+
+        subtitle: Text(
+          NumberFormat.currency(
+            symbol: '₱',
+            decimalDigits: 2,
+          ).format(double.parse(price)),
+          style: const TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: 14,
+            color: Colors.green,
+          ),
+        ),
+        trailing: IconButton(
+          icon: const Icon(Icons.add_shopping_cart, color: Colors.green),
+          onPressed: () {
+            // Add to cart functionality
+            _addToCart(name, price);
+          },
+        ),
+        onTap: () {
+          // Product details functionality
+          _showProductDetails(name, price, imagePath);
+        },
+      ),
+    );
+  }
+
+  void _addToCart(String productName, String price) {
+    // Implement add to cart logic
+    print('Added $productName to cart - Price: ₱$price');
+  }
+
+  void _showProductDetails(String name, String price, String imagePath) {
+    // Implement product details logic
+    print('Showing details for: $name');
   }
 }
